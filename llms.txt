@@ -1,0 +1,17 @@
+# Quantum Passive Field Sensing
+
+> Single-exposure global minimax estimation of a polynomial field coefficient with a fixed qubit lattice and unknown lower-order spatial phases.
+
+## Scientific routes
+
+- [Model and exact statements](science/model.md): binary occupation generators, identifiable angle, arbitrary nuisance, fixed-aperture conversion and resource assumptions.
+- [Minimax proof](science/minimax.md): twirling, consecutive charges, finite Fourier measurement and k-producible lower bound.
+- [Lattice construction](science/arithmetic.md): signed finite-difference code, sharp spectral constant, and compact constructive alternative.
+- [Worked receiver](science/example.md): eight sensors, three configurations and four outcomes.
+- [Robustness](science/robustness.md): diagonal phase error, position perturbation and control assumptions.
+- [Related work](references/RELATED_WORK.md): prior DFS, phase estimation, spatial models and exact arithmetic.
+
+## Study and reproduce
+
+- [Learning guide](learning/README.md): one educational anchor, bridge, and milestone map.
+- [Verification](verification/README.md): run the deterministic finite checks with Python 3.
