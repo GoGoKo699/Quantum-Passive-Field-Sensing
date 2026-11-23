@@ -15,7 +15,7 @@ An order-$`a`$ block, for $`a\ge1`$, is determined by a position $`s`$ and posit
 ```math
 \Delta Q_k
   = (\Delta_{h_1}\cdots\Delta_{h_a})\binom{s}{k}
-  = \sum_{0\le t_i<h_i}\binom{s+t_1+\cdots+t_a}{k-a},
+  = \sum_{0\le t_i\lt h_i}\binom{s+t_1+\cdots+t_a}{k-a},
 ```
 
 where $`\Delta_h f(x)=f(x+h)-f(x)`$. The second identity holds for $`k\ge a`$ by telescoping the unit-step binomial identity. Thus all $`Q_k`$ with $`k<a`$ are unchanged, and $`\Delta Q_a=\prod_i h_i`$. For $`k>a`$, the absolute change is at most $`C_d N^{k-a}\Delta Q_a`$ on the full length-$`N`$ lattice. Reversing the orientation reverses the sign. For $`a=0`$ a single site is the analogous unit block. The equal-lower-power-sum identity is an instance of the [Prouhet–Tarry–Escott construction](https://arxiv.org/abs/2609.05061). The arrangement of many such blocks for a consecutive same-sector spectrum is the step needed here.
@@ -59,13 +59,13 @@ The Riemann sum uses $`\int_{-1}^1|U_d(x)|\,dx=\int_0^\pi|\sin((d+1)t)|\,dt=2`$.
 
 ### Reserve sites without creating a leading moment error
 
-Put $`\sigma(x)=\operatorname{sgn}U_d(x)`$. Its lower moments vanish
+Put $`\sigma(x)=\mathrm{sgn}U_d(x)`$. Its lower moments vanish
 
 ```math
 \int_{-1}^1 \sigma(x)x^a\,dx=0,\qquad 0\le a<d.
 ```
 
-With $`x=\cos t`$, the integrand becomes $`\operatorname{sgn}\sin((d+1)t)\cos^a(t)\sin(t)`$. The second factor is a combination of sine harmonics of order at most $`a+1`$. The first has only odd multiples of harmonic $`d+1`$ in its sine expansion on $`[0,\pi]`$.
+With $`x=\cos t`$, the integrand becomes $`\mathrm{sgn}\sin((d+1)t)\cos^a(t)\sin(t)`$. The second factor is a combination of sine harmonics of order at most $`a+1`$. The first has only odd multiples of harmonic $`d+1`$ in its sine expansion on $`[0,\pi]`$.
 
 Take $`M=\lceil A_dN^{d/(d+1)}\rceil`$ with a fixed large constant $`A_d`$. Reserve the leftmost $`M`$ sites, and let $`B=N-M`$. On the remaining interval, use the rescaled points $`z_j=2(j-M)/B-1`$ and signs $`\sigma(z_j)`$. The signed sums of each lower charge are $`O_d(N^a)`$. Indeed, $`N^{-a}\binom{M+B(z+1)/2}{a}`$ has degree $`a<d`$ and uniformly bounded coefficients and derivative. Its signed continuum integral vanishes by orthogonality. A Riemann sum has error $`O_d(1)`$ before normalization by the number of sites, because the degree and number of sign boundaries are fixed. At a root, either choice of sign changes the estimate by only finitely many terms.
 
