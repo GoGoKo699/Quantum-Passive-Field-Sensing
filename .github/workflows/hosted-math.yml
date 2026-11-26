@@ -1,0 +1,83 @@
+name: Hosted mathematics validation
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/hosted-math.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: passive-field-hosted-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CAPTURE_REVISION: '972f69b4fc606ac5c03676c2bb36626270810c3a'
+      HELPER_URL: https://raw.githubusercontent.com/GoGoKo699/Entanglement-Assistance-Output-Limits/ae79fb2bf56f12c8171100d676b771e635a5013f/verification/hosted_math
+    steps:
+      - name: Check out the pinned scientific source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.CAPTURE_REVISION }}
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Fetch and verify the pinned public collector
+        run: |
+          test "$(git rev-parse HEAD)" = "$CAPTURE_REVISION"
+          helper_dir="$RUNNER_TEMP/hosted-helpers"
+          mkdir -p "$helper_dir" "$RUNNER_TEMP/hosted-evidence"
+          get_helper() {
+            local file="$1"
+            local expected="$2"
+            curl --fail --silent --show-error --retry 2 --max-time 30 \
+              "$HELPER_URL/$file" --output "$helper_dir/$file"
+            test "$(git hash-object "$helper_dir/$file")" = "$expected"
+          }
+          get_helper capture_hosted_math.cjs e8d2c87b345b1c94c11e01b8661f92e4abf8d97d
+          get_helper probe_hosted_math.cjs f83ea9da799bee0b53bd5c57315ae2b4b2d9de43
+          get_helper check_rendered_math.py 1d3bf9810d0dfadb844a48b354af80f9b66924bc
+      - name: Install the capture runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/math-runtime" playwright@1.56.1 mathjax-full@3.2.1
+          node "$RUNNER_TEMP/math-runtime/node_modules/playwright/cli.js" install chromium
+      - name: Probe the calibration proof at both widths
+        run: |
+          export NODE_PATH="$RUNNER_TEMP/math-runtime/node_modules"
+          node "$RUNNER_TEMP/hosted-helpers/probe_hosted_math.cjs" \
+            --root "$GITHUB_WORKSPACE" --repository "$GITHUB_REPOSITORY" \
+            --revision "$CAPTURE_REVISION" --page science/calibration.md \
+            --output "$RUNNER_TEMP/hosted-evidence/probe" || echo "The diagnostic probe recorded a failure"
+      - name: Compare all pinned Markdown pages at both widths
+        run: |
+          export NODE_PATH="$RUNNER_TEMP/math-runtime/node_modules"
+          evidence="$RUNNER_TEMP/hosted-evidence"
+          capture=(
+            node "$RUNNER_TEMP/hosted-helpers/capture_hosted_math.cjs"
+            --root "$GITHUB_WORKSPACE" --repository "$GITHUB_REPOSITORY"
+            --revision "$CAPTURE_REVISION"
+          )
+          if "${capture[@]}" --output "$evidence/first"; then
+            exit 0
+          fi
+          if python3 -c 'import json, pathlib, sys; failures = json.loads(pathlib.Path(sys.argv[1]).read_text())["failures"]; sys.exit(0 if failures and all(item["category"] == "transport_failure" for item in failures) else 1)' "$evidence/first/capture-state.json"; then
+            "${capture[@]}" --resume-from "$evidence/first" --output "$evidence/resumed"
+          else
+            exit 1
+          fi
+      - name: Retain the captures and comparison reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: hosted-math-${{ env.CAPTURE_REVISION }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/hosted-evidence
+          if-no-files-found: error
+          retention-days: 14
