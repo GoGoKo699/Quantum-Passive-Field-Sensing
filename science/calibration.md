@@ -27,7 +27,7 @@ The constants are uniform in $`k`$ and $`\epsilon`$. Full-depth preparation reta
 
 ## Equal-gap stencils and a finite receiver
 
-Choose $`T=\lfloor\rho N\rfloor`$ with $`\rho>0`$ a sufficiently small constant, and set $`D=2^d`$. For $`0\le s<T`$ use the stencil at sites $`s+tT`$ with $`0\le t<D`$. Stencils are disjoint. The two occupation words use opposite subset parities, oriented as the $`d`$-fold forward difference. By the [finite-difference identity](arithmetic.md#blocks-with-prescribed-signal-gaps), their lower moments agree and the relative phase of one stencil is
+Choose $`T=\lfloor\rho N\rfloor`$ with $`\rho>0`$ a sufficiently small constant, and set $`D=2^d`$. For $`0\le s\lt T`$ use the stencil at sites $`s+tT`$ with $`0\le t\lt D`$. Stencils are disjoint. The two occupation words use opposite subset parities, oriented as the $`d`$-fold forward difference. By the [finite-difference identity](arithmetic.md#blocks-with-prescribed-signal-gaps), their lower moments agree and the relative phase of one stencil is
 
 ```math
 h\beta+\xi_s,\qquad
@@ -65,7 +65,7 @@ The group outcomes are independent at each fixed field and error vector. Their m
 
 Project to the nearest point of the known arc and divide its lifted angle by $`h`$. The projected chord error is at most twice the raw error. Angular distance within the arc is at most $`\pi/2`$ times chord distance. Together with $`mb^2=\Theta_d(Nk)`$, this proves the upper bound.
 
-For $`k<D`$, start every stencil in $`|+\rangle^{\otimes D}`$. After exposure project to the span of its two words. The probability $`p=2^{1-D}`$ is independent of the field and errors, and the conditional state is the exposed $`b=1`$ probe. Score a failed projection as zero and a Fourier success as $`e^{i\alpha}/(p c_1)`$. Each such score has the same expected phasor as the $`b=1`$ receiver and variance bounded in terms of $`d`$. Averaging over all $`T`$ stencils gives $`O_{d,I}(1/N+\epsilon^2)`$ throughout this bounded range of $`k`$. The strategy always charges every exposure and incorporates all failures.
+For $`k\lt D`$, start every stencil in $`|+\rangle^{\otimes D}`$. After exposure project to the span of its two words. The probability $`p=2^{1-D}`$ is independent of the field and errors, and the conditional state is the exposed $`b=1`$ probe. Score a failed projection as zero and a Fourier success as $`e^{i\alpha}/(p c_1)`$. Each such score has the same expected phasor as the $`b=1`$ receiver and variance bounded in terms of $`d`$. Averaging over all $`T`$ stencils gives $`O_{d,I}(1/N+\epsilon^2)`$ throughout this bounded range of $`k`$. The strategy always charges every exposure and incorporates all failures.
 
 ## Matching lower bounds
 
@@ -96,14 +96,14 @@ R^*_{N,k}(\epsilon)/\epsilon^2\longrightarrow64 .
 
 For the lower bound, the monic quadratic $`p(x)=x^2-x+1/8`$ has modulus at most $`1/8`$ on $`[0,1]`$. Take two fields separated by $`16\epsilon p(x)`$ with coefficients centered inside $`I`$. Opposite site errors $`\mp8\epsilon p(x_j)`$ are admissible and make the channels identical. The separation in $`\beta`$ is $`16\epsilon`$.
 
-For the upper bound, pack $`T_f=\lfloor N/A^{1/4}\rfloor`$ fine stencils with shifts $`u=\lfloor(N-2T_f)/2\rfloor`$ and $`v=u+T_f`$. The stencil at $`s`$ uses $`s,s+u,s+v,s+u+v`$ for $`0\le s<T_f`$. They are disjoint, occupying four ranges near 0, 1/2 and 1. Their common phase step is $`\gamma=2uv/(N-1)^2\to1/2`$. For $`k\ge4`$ use $`b_f=\min\{\lfloor k/4\rfloor,\lfloor T_f/A^{1/4}\rfloor\}`$ and $`m_f=\lfloor T_f/b_f\rfloor`$. Since $`A=o(N)`$ and $`k\le N`$,
+For the upper bound, pack $`T_f=\lfloor N/A^{1/4}\rfloor`$ fine stencils with shifts $`u=\lfloor(N-2T_f)/2\rfloor`$ and $`v=u+T_f`$. The stencil at $`s`$ uses $`s,s+u,s+v,s+u+v`$ for $`0\le s\lt T_f`$. They are disjoint, occupying four ranges near 0, 1/2 and 1. Their common phase step is $`\gamma=2uv/(N-1)^2\to1/2`$. For $`k\ge4`$ use $`b_f=\min\{\lfloor k/4\rfloor,\lfloor T_f/A^{1/4}\rfloor\}`$ and $`m_f=\lfloor T_f/b_f\rfloor`$. Since $`A=o(N)`$ and $`k\le N`$,
 
 ```math
 m_f\to\infty,\qquad
 \epsilon^2 m_f b_f^2\ge c\min\{A^{7/4},A^{5/4}\}\to\infty
 ```
 
-for some fixed $`c>0`$. Here $`m_f b_f^2\ge T_f b_f/2`$. At $`k<4`$ use the product version on all $`T_f`$ single stencils and $`\epsilon^2 T_f\to\infty`$.
+for some fixed $`c>0`$. Here $`m_f b_f^2\ge T_f b_f/2`$. At $`k\lt 4`$ use the product version on all $`T_f`$ single stencils and $`\epsilon^2 T_f\to\infty`$.
 
 The expected fine phasor is $`e^{i\gamma\beta}`$ times a positive average of phase factors with shifts in $`[-4\epsilon,4\epsilon]`$. Its angular bias is at most $`4\epsilon`$ and its modulus is at least $`\cos(4\epsilon)`$ for small $`\epsilon`$. The sample mean variance is $`o(\epsilon^2)`$ by the size conditions.
 

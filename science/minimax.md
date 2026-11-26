@@ -29,7 +29,7 @@ The nuisance and first charge give a common phase. Reversibly decode to the addr
 p_m=\frac1M\left|\sum_{r=0}^{L-1}a_r e^{ir(\phi-\alpha_m)}\right|^2.
 ```
 
-In the first moment of $`e^{i(\alpha_m-\phi)}`$, the discrete Fourier sum keeps $`r-s=1\bmod M`$. Since $`|r-s|<L<M`$ and $`M>L`$, the surviving terms have $`r-s=1`$. The score is exactly the adjacent sum for all target and nuisance values, attaining the converse. A power of two for $`M`$ permits a qubit Fourier transform.
+In the first moment of $`e^{i(\alpha_m-\phi)}`$, the discrete Fourier sum keeps $`r-s=1\bmod M`$. Since $`|r-s|\lt L\lt M`$ and $`M>L`$, the surviving terms have $`r-s=1`$. The score is exactly the adjacent sum for all target and nuisance values, attaining the converse. A power of two for $`M`$ permits a qubit Fourier transform.
 
 ## Entanglement depth
 
