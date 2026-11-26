@@ -43,3 +43,5 @@ A $`k`$-producible probe is a mixture of product states across blocks of at most
 For any two signals at distance $`\delta`$ the pure-state path length bounds their output trace distance by half of $`\delta`$ times the square root of this information bound. Convexity applies to mixtures. With $`\delta=c_d/(\sqrt kN^{d+1/2})`$ and small fixed $`c_d`$, distinguishing the two signals from any measurement has error at least one quarter under equal priors. The nearest-point test built from an estimator errs only if that estimate is at least $`\delta/2`$ from the true point. Its worst-case circular risk is therefore $`\Omega_d((kN^{2d+1})^{-1})`$.
 
 In fixed-aperture units, the same reasoning uses weights $`x_j^d`$ and squared loss, giving $`\Omega_d((kN)^{-1})`$. The unrestricted lower bound uses $`k=N`$, and the separable lower bound uses $`k=1`$. Joint readout is permitted in both cases.
+
+The [fixed-aperture calibration result](calibration.md) attains the physical depth dependence with a bounded coefficient interval and quantifies the additional systematic-error cost.

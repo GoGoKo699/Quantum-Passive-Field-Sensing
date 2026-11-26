@@ -206,42 +206,42 @@ M16, M20, M22. The symmetric construction gives a second way to see the curvatur
 
 [Arithmetic construction](../science/arithmetic.md)
 
-### M26 How does the same exposure constrain separable probes?
+### M26 How does preparation depth constrain physical precision?
 
-Explain the block variance bound and the two-point comparison that give the separable-input risk lower bound, even when the nuisance values are supplied.
+Use the block variance bound to construct a two-point lower bound on mean-square error at fixed aperture. State what the bound gives for separable preparation and for one array-wide block.
 
-M12, M14, M21. Charging the same number of sensors and exposure time makes the entangled-input comparison meaningful.
+M12, M14, M21. The comparison charges the same sensors and one exposure for both probes.
 
 [Minimax proof](../science/minimax.md)
 
-### M27 What scales at a fixed physical aperture?
+### M27 Why does a bounded coefficient interval allow wider phase steps?
 
-Translate the raw lattice angle and circular risk into the error for a bounded physical coefficient. Identify where the normalized generator and the physical bandwidth enter.
+Compare the size of one integer step on the full phase circle with the fixed physical phase step of a translated stencil. Show how a known interval allows that wider step to encode the coefficient without aliases.
 
-M03, M05, M21, M26. The comparison gives Heisenberg-order physical mean-square error for the entangled receiver.
+M05, M19, M26. The physical coefficient interval sets the useful phase step for the new receiver.
 
-[Model](../science/model.md)
+[Model](../science/model.md) · [Fixed-aperture calibration](../science/calibration.md)
 
-### M28 Which calibration errors reduce the Fourier score?
+### M28 Which site errors affect the Fourier score?
 
-Derive the role of phase differences between neighboring codewords and distinguish a common phase from a site-dependent residual.
+Compute the Fourier first moment when neighboring codewords differ by one stencil. Bound the bias of the normalized Fourier outcome and explain how averaging groups reduces its variance.
 
-M15, M19, M24. The same adjacency that governs ideal risk identifies which errors matter.
+M15, M19, M24, M27. Large codewords can accumulate phases while adjacent differences remain small.
 
-[Robustness](../science/robustness.md)
+[Phase and control errors](../science/robustness.md) · [Fixed-aperture calibration](../science/calibration.md)
 
-### M29 Why does the nuisance range matter under geometry error?
+### M29 Why can position knowledge limit the coefficient estimate?
 
-Relate bounded smooth-field derivatives to a site-phase error budget and explain how a generic perturbation with unbounded slope can destroy the shared moment sectors.
+Construct two coefficient values that give the same site phases with opposite residual shifts. For unknown positions, use a monotone coordinate warp to obtain the same ambiguity with both endpoints fixed. Identify where the bounded slope enters the receiver guarantee.
 
-M06, M13, M27, M28. Exact lattice cancellation and robustness under calibrated placement errors have different assumptions.
+M06, M13, M27, M28. Matching the actual phase profiles gives a lower bound for every preparation and readout.
 
-[Robustness](../science/robustness.md)
+[Fixed-aperture calibration](../science/calibration.md) · [Phase and control errors](../science/robustness.md)
 
-### M30 What does one passive exposure establish?
+### M30 Why does the curvature floor have coefficient 64?
 
-Connect exact lower-moment cancellation, the sharp consecutive spectrum, finite readout, separable comparison and geometric accuracy. State which assumptions each conclusion uses.
+Use the maximum deviation of the monic quadratic residual on the aperture to derive the lower constant. Explain how the high-gap four-site stencils approach it and how coarse estimates select the correct phase branch. State when the constant applies.
 
-M15, M17, M24–M29. This assembles the precision guarantee and its implementation limits into one argument.
+M15, M19, M22, M27–M29. This connects the calibration-dominated asymptotic to explicit sensing resources and the global parameter range.
 
-[Model](../science/model.md) · [Minimax proof](../science/minimax.md) · [Arithmetic construction](../science/arithmetic.md) · [Robustness](../science/robustness.md) · [Eight-qubit example](../science/example.md)
+[Fixed-aperture calibration](../science/calibration.md)

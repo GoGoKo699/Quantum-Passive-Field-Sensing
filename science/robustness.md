@@ -1,6 +1,6 @@
 # Phase errors and lattice accuracy
 
-The bounds below apply to the nominal-lattice encoder and decoder with one simultaneous exposure. They quantify diagonal phase errors separately from errors in preparation and decoding.
+The bounds below apply to the nominal-lattice encoder and decoder with one simultaneous exposure. They quantify diagonal phase errors separately from errors in preparation and decoding. A [separate receiver](calibration.md) attains the minimax error order on a bounded physical coefficient interval and gives the corresponding result under bounded, unsupplied position errors.
 
 ## Exact excess risk for diagonal phase errors
 
@@ -69,7 +69,7 @@ B_2(\eta)=\sum_{a=2}^d a(a-1)A_a(1+\eta)^{a-2}.
 
 Taylor's theorem gives $`e_j=P'(x_j)\delta_j+u_j`$ with $`|u_j|\le B_2(\eta)\eta^2/2`$. Hence one can take $`\epsilon=B_1\eta+B_2(\eta)\eta^2/2`$. The constant offset cancels exactly. For a worst-case uncalibrated geometry and a linear field $`P(x)=g x`$, signed displacements already realize the diagonal error patterns $`e_j=\pm g\eta`$ when shifts around both endpoints are allowed. Extra unmodeled profile terms can also be included by adding their maximum site phase to $`\epsilon`$.
 
-The certified crossover for the receiver is $`\epsilon=O(N^{-d-1})`$ to retain the ideal risk order, or $`\epsilon=o(N^{-d-1})`$ to retain its leading constant. For curvature this means $`\epsilon=O(N^{-3})`$. This is a guarantee for the nominal-lattice receiver. The best tolerance under calibration or redesigned encoding is a separate optimization problem.
+The certified crossover for the receiver is $`\epsilon=O(N^{-d-1})`$ to retain the ideal risk order, or $`\epsilon=o(N^{-d-1})`$ to retain its leading constant. For curvature this means $`\epsilon=O(N^{-3})`$. This is the tolerance certified for the nominal-lattice receiver. The [fixed-aperture receiver](calibration.md) uses a bounded interval for the physical coefficient to attain a larger tolerance for the same physical precision order.
 
 For a known bounded interval of $`\beta`$, project the phase estimate onto its image arc, of length at most $`\pi`$ for sufficiently large $`N`$. Projection onto this arc increases the circular distance to the true phase by at most a factor of two, by the triangle inequality. The projected and true phases lie on the same short arc, so convert their distance to the ordinary coefficient error by multiplying by $`(N-1)^d/d!`$. Since $`1-\cos t\ge 2t^2/\pi^2`$ for $`|t|\le\pi`$, the mean-square coefficient error is bounded by
 
