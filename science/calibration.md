@@ -10,7 +10,7 @@ One exposure rotates occupation one at nominal position $`x_j=j/(N-1)`$ by
 
 ```math
 P(x_j)+e_j,\qquad
-P(x)=\beta x^d+\sum_{a<d}\alpha_a x^a,\qquad |e_j|\le\epsilon.
+P(x)=\beta x^d+\sum_{a\lt d}\alpha_a x^a,\qquad |e_j|\le\epsilon.
 ```
 
 The degree $`d\ge1`$ and nondegenerate closed bounded interval $`I`$ for $`\beta`$ are fixed. The lower coefficients are arbitrary. The phase errors are fixed during the exposure, unknown and allowed to vary arbitrarily across sites. Preparation is $`k`$-producible on the exposed sensors as in the [depth converse](minimax.md#entanglement-depth). Joint readout is allowed. All $`N`$ sites count, with one binary occupation and one simultaneous exposure per site.
