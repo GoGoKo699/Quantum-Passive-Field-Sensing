@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     env:
-      CAPTURE_REVISION: '972f69b4fc606ac5c03676c2bb36626270810c3a'
+      CAPTURE_REVISION: '3e000fc88e5ab4b073116c094349ba31044a32d9'
       HELPER_URL: https://raw.githubusercontent.com/GoGoKo699/Entanglement-Assistance-Output-Limits/ae79fb2bf56f12c8171100d676b771e635a5013f/verification/hosted_math
     steps:
       - name: Check out the pinned scientific source
