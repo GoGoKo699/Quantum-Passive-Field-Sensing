@@ -8,6 +8,7 @@
 - [Minimax proof](science/minimax.md): twirling, consecutive charges, finite Fourier measurement and k-producible lower bound.
 - [Lattice construction](science/arithmetic.md): signed finite-difference code, sharp spectral constant, and compact constructive alternative.
 - [Worked receiver](science/example.md): eight sensors, three configurations and four outcomes.
+- [Calibration-limited sensing](science/calibration.md): bounded-interval estimator, depth and systematic phase tradeoff, unknown-coordinate converse and exact curvature floor.
 - [Robustness](science/robustness.md): diagonal phase error, position perturbation and control assumptions.
 - [Related work](references/RELATED_WORK.md): prior DFS, phase estimation, spatial models and exact arithmetic.
 
